@@ -56,6 +56,7 @@
       }
 
       .festive-text {
+        position: relative;
         font-size: 40px;
         font-weight: bold;
         background: linear-gradient(to right, #ff3333, #ff6b6b);
@@ -63,13 +64,24 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
 
-        /* ✨ Weißer Glow hinter dem Text */
-        text-shadow:
-          0 0 6px rgba(255,255,255,0.6),
-          0 0 12px rgba(255,255,255,0.4),
-          0 0 20px rgba(255,255,255,0.25);
-
         animation: float 3s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      /* ✨ Glow-Ebene HINTER dem Text */
+      .festive-text::before {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        white-space: pre-line;
+
+        color: white;
+        z-index: -1;
+
+        filter: blur(8px);
+        opacity: 0.9;
       }
 
       @keyframes float {
@@ -181,12 +193,15 @@
 
       <!-- Festive Greeting -->
       <div id="greetings">
-        <div class="festive-text">
+        <div class="festive-text"
+            data-text="Frohe Weihnachten!
+      und einen gelungenen Start ins neue Jahr!">
           Frohe Weihnachten!<br>
-          <span style="font-size: 24px;">und einen gelungenen Start ins neue Jahr!</span>
+          <span style="font-size: 24px;">
+            und einen gelungenen Start ins neue Jahr!
+          </span>
         </div>
       </div>
-    </div>
 
     <!-- AR SCENE -->
     <a-scene 
