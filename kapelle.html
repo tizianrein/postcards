@@ -62,7 +62,13 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.671);
+
+        /* ✨ Weißer Glow hinter dem Text */
+        text-shadow:
+          0 0 6px rgba(255,255,255,0.6),
+          0 0 12px rgba(255,255,255,0.4),
+          0 0 20px rgba(255,255,255,0.25);
+
         animation: float 3s ease-in-out infinite;
       }
 
